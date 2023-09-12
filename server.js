@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Define your routes variable
 const routes = require('./routes');
-
 app.use(routes);
 
 db.sequelize.sync({ force: false }).then(() => {
