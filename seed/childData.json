@@ -1,0 +1,24 @@
+[
+    {
+        "first_name": "Ella",
+        "last_name": "Jones",
+        "parent_email": "michealjones@pmail.com",
+        "parent_phone": "2015874939",
+        "admission_date": "2022-09-01"
+    },
+    {
+        "first_name": "Simbi",
+        "last_name": "Adeyemi",
+        "parent_email": "sallyadeyimi@pmail.com",
+        "parent_phone": "2016748676",
+        "admission_date": "2022-09-01"
+    },
+    {
+        "first_name": "Brandon",
+        "last_name": "Alexander",
+        "parent_email": "fionaaex@pmail.com",
+        "parent_phone": "2019343743",
+        "admission_date": "2022-09-01"
+    }
+    
+]
