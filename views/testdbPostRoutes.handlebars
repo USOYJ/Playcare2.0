@@ -1,0 +1,133 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h2>Test Page for Adding Things to the DB</h2>
+        <form class="clearfix mb-4" action="POST" id="addParent">
+          <div class="form-group">
+            <label for="name-first">First Name</label>
+            <input
+              type="text"
+              id="name-first"
+              class="form-control"
+              aria-describedby="name_first"
+              placeholder="Bob"
+            />
+          </div>
+          <div class="form-group">
+            <label for="name-last">Last Name</label>
+            <input
+              type="text"
+              id="name-last"
+              class="form-control"
+              aria-describedby="name_last"
+              placeholder="Ross"
+            />
+          </div>
+          <button id="submit" class="btn btn-primary float-right">
+            Submit
+          </button>
+        </form>
+        <h4>MUST CLICK GEN PARENTS FIRST</h4>
+        <h3>Generate Parents</h3>
+        <button class="btn btn-primary" id="genparents">GenParent</button>
+        <h3>Generate Kids</h3>
+        <button class="btn btn-primary" id="genkids">GenKids</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="../public/js/registerParent.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#addParent').on('submit', function(event) {
+      event.preventDefault();
+      var parent = {
+        name_first: $('#name-first').val().trim(),
+        name_last: $('#name-last').val().trim()
+      };
+      addParentFunc(parent);
+    });
+
+    // Button to auto-generate parents
+    $('#genparents').on('click', function() {
+      var parents = [
+        { name_first: 'Brandon', name_last: 'Alexander', phone: '2123335858' },
+        { name_first: 'Jonathan', name_last: 'Padon', phone: '3214567890' },
+        { name_first: 'Akash', name_last: 'Partel', phone: '2345437777' }
+      ];
+      parents.forEach(function(parent) {
+        addParentFunc(parent);
+      });
+    });
+
+    // Helper to post parent
+    function addParentFunc(parent) {
+      $.post('/api/Parent', parent).then(function() {
+        console.log('parent added');
+      });
+    });
+
+    // Button to auto-generate kids
+    $('#genkids').on('click', function() {
+      var kids = [
+        {
+          ParentId: 1,
+          name_first: 'Danya',
+          name_last: 'Alexander',
+          age: 3,
+          gender: 'F',
+          allergies: 'NONE',
+          dietRestrictions: 'NONE',
+          notes:
+            'sometimes she really wants attention and sometimes she just wants to be a potato alone'
+        },
+        {
+          ParentId: 1,
+          name_first: 'Ari',
+          name_last: 'Alexander',
+          age: 16,
+          gender: 'M',
+          allergies: 'n/a',
+          dietRestrictions: 'n/a',
+          notes: 'Pretty chill dude at first but actually will roast you'
+        },
+        {
+          ParentId: 2,
+          name_first: 'Mary',
+          name_last: 'Pabon',
+          age: 86,
+          gender: 'M',
+          allergies: 'n/a',
+          dietRestrictions: 'n/a',
+          notes:
+            'You would have thought she had a cooking show but really she\'s an 86-year-old dude named Derek'
+        },
+        {
+          ParentId: 3,
+          name_first: 'Anjali',
+          name_last: 'Patel',
+          age: 24,
+          gender: 'M',
+          allergies: 'n/a',
+          dietRestrictions: 'n/a',
+          notes: 'Will suddenly implode and become reborn from the ashes of his enemies'
+        }
+      ];
+      kids.forEach(function(child) {
+        addChildFunc(child);
+      });
+    });
+
+    // Add child helper
+    function addChildFunc(child) {
+      console.log(child);
+      $.post('/api/Child', child).then(function() {
+        console.log('child added');
+      });
+    });
+  });
+</script>
+

@@ -1,0 +1,17 @@
+.list-group-item {
+  line-height: 2.5;
+}
+
+.logo {
+  align-content: center;
+  font-size: xx-large;
+}
+
+body {
+  font-family: 'Luckiest Guy', cursive;
+  background-image: url('/images/Playimage.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
